@@ -1,16 +1,13 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import { ListItemIcon, ListItemText, AppBar, Drawer } from '@material-ui/core';
-import Notifications from '@material-ui/icons/Notifications';
-import Chat from '@material-ui/icons/Chat';
-import Group from '@material-ui/icons/Group';
-import HelpOutline from '@material-ui/icons/HelpOutline';
+import { AppBar, Drawer } from '@material-ui/core';
+import Menu from './components/core/menu.component';
+import Home from './components/home/home.component';
 
 const drawerWidth = 240;
 
@@ -55,7 +52,10 @@ const useStyles = makeStyles((theme: Theme) =>
 function App() {
   const classes = useStyles();
 
+  const NotificationsPage = lazy(() => import('./components/notifications.component'));
+
   return (
+    <Router>
     <div className={classes.root}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
@@ -76,41 +76,23 @@ function App() {
         <div className={classes.drawerContainer}>
           <Typography variant='h4' className={classes.drawerServerName}>Server</Typography>
           <div className={classes.listsContainer}>
-            <List>
-              <ListItem button key='notifications'>
-                <ListItemIcon><Notifications></Notifications></ListItemIcon>
-                <ListItemText primary='Notifications' />
-              </ListItem>
-              <ListItem button key='chat'>
-                <ListItemIcon><Chat></Chat></ListItemIcon>
-                <ListItemText primary='Direct Messages' />
-              </ListItem>
-              <ListItem button key='channels'>
-                <ListItemIcon><Group></Group></ListItemIcon>
-                <ListItemText primary='Channels' />
-              </ListItem>
-            </List>
-            <List>
-              <ListItem button key='help'>
-                <ListItemIcon><HelpOutline /></ListItemIcon>
-                <ListItemText primary='Help' />
-              </ListItem>
-            </List>
+            <Menu />
           </div>
         </div>
       </Drawer>
       <main className={classes.content}>
         <Toolbar />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit libero eveniet esse molestiae quaerat ipsum aperiam neque, recusandae vitae in dolorem et tenetur nam sunt quidem. Saepe optio qui facere.
-        </Typography>
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore voluptatum eum aliquam adipisci excepturi, architecto vero itaque laboriosam sit, blanditiis maxime totam dignissimos sunt. Sint similique non praesentium error dolores.
-        </Typography>
+          <Suspense fallback={'loading'}>
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/notifications' component={NotificationsPage} />
+              <Route component={Home} />
+            </Switch>
+          </Suspense>
       </main>
     </div>
+    </Router>
   );
 }
-
 
 export default App;

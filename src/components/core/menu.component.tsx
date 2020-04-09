@@ -1,0 +1,44 @@
+import React, { FunctionComponent } from 'react';
+import { Link } from 'react-router-dom';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import { ListItemIcon, ListItemText } from '@material-ui/core';
+import Notifications from '@material-ui/icons/Notifications';
+import Chat from '@material-ui/icons/Chat';
+import Group from '@material-ui/icons/Group';
+import HelpOutline from '@material-ui/icons/HelpOutline';
+
+
+
+const Menu: FunctionComponent<any> = (props: any) => {
+    return (
+        <div>
+            <List>
+              <Link to="/notifications">
+                <ListItem button key='notifications'>
+                  <ListItemIcon><Notifications></Notifications></ListItemIcon>
+                  <ListItemText primary='Notifications' />
+                </ListItem>
+              </Link>
+              <Link to="/direct_messsages">
+                <ListItem button key='chat'>
+                    <ListItemIcon><Chat></Chat></ListItemIcon>
+                    <ListItemText primary='Direct Messages' />
+                </ListItem>
+              </Link>
+              <ListItem button key='channels'>
+                <ListItemIcon><Group></Group></ListItemIcon>
+                <ListItemText primary='Channels' />
+              </ListItem>
+            </List>
+            <List>
+              <ListItem button key='help'>
+                <ListItemIcon><HelpOutline /></ListItemIcon>
+                <ListItemText primary='Help' />
+              </ListItem>
+            </List>
+        </div>
+    );
+}
+
+export default Menu;
