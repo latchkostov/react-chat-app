@@ -6,7 +6,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import { AppBar, Drawer } from '@material-ui/core';
-import Menu from './components/core/menu.component';
+import Menu from './components/menu/menu.component';
 import Home from './components/home/home.component';
 
 const drawerWidth = 240;
