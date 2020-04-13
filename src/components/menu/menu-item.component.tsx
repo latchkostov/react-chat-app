@@ -7,7 +7,7 @@ export interface MenuItemProps {
     linkTo: string;
     Icon: any;
     text: string;
-    onCustomClick?: any;
+    onCustomClick?(item: string): any;
     menuItemKey?: number;
 }
 
@@ -23,7 +23,7 @@ const MenuItem: FunctionComponent<MenuItemProps> = (props: MenuItemProps) => {
     const key = menuItemKey !== undefined ? menuItemKey : text;
     return (
         <div>
-            <ListItem button key={key} onClick={() => onCustomClick(linkTo)}>
+            <ListItem button key={key} onClick={() => onCustomClick ? onCustomClick(linkTo) : null}>
                 <ListItemIcon classes={{root: classes.root}}><Icon /></ListItemIcon>
             </ListItem>
         </div>
