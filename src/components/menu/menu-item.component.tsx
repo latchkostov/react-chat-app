@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import { Link } from 'react-router-dom';
 import ListItem from '@material-ui/core/ListItem';
-import { ListItemIcon, ListItemText } from '@material-ui/core';
+import { ListItemIcon } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 export interface MenuItemProps {
