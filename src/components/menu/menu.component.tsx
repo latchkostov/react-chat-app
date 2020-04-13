@@ -6,6 +6,7 @@ import Group from '@material-ui/icons/Group';
 import HelpOutline from '@material-ui/icons/HelpOutline';
 import styled from 'styled-components';
 import MenuItem, { MenuItemProps } from './menu-item.component';
+import { withRouter } from 'react-router-dom';
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,6 +14,9 @@ const Wrapper = styled.div`
   justify-content: space-between;
   flex-direction: column;
 `;
+
+export interface MenuProps {
+}
 
 const topListItems: MenuItemProps[] = [
   {
@@ -27,12 +31,15 @@ const topListItems: MenuItemProps[] = [
 ]
 
 const Menu: FunctionComponent<any> = (props: any) => {
-    return (
+  const { history } = props;
+
+  return (
       <Wrapper>
         <List>
           {
             topListItems.map((item, idx) => 
-              <MenuItem key={idx} linkTo={item.linkTo} text={item.text} Icon={item.Icon} menuItemKey={idx} /> 
+              <MenuItem key={idx} linkTo={item.linkTo} text={item.text}
+                Icon={item.Icon} menuItemKey={idx} onCustomClick={(item: string) => history.push(item)} /> 
             )
           }
         </List>
@@ -43,4 +50,4 @@ const Menu: FunctionComponent<any> = (props: any) => {
     );
 }
 
-export default Menu;
+export default withRouter(Menu);
