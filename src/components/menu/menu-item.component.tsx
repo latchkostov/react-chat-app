@@ -18,7 +18,7 @@ const MenuItem: FunctionComponent<MenuItemProps> = (props: MenuItemProps) => {
         <Link to={linkTo}>
             <ListItem button key={key}>
                 <ListItemIcon><Icon /></ListItemIcon>
-                <ListItemText primary={text} />
+                {/* <ListItemText primary={text} /> */}
             </ListItem>
         </Link>
         </div>

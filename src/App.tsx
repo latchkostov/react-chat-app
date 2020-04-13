@@ -9,7 +9,7 @@ import { AppBar, Drawer } from '@material-ui/core';
 import Menu from './components/menu/menu.component';
 import Home from './components/home/home.component';
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -40,11 +40,19 @@ const useStyles = makeStyles((theme: Theme) =>
       marginTop: '2rem',
       marginBottom: '0.5rem'
     },
+    menuAndRouterContainer: {
+      display: 'flex',
+      height: '88%'
+    },
     listsContainer: {
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
-      height: '85%'
+      borderRight: '1px solid black'
+    },
+    routerContainer: {
+      flexGrow: 1,
+      textAlign: 'center'
     }
   }),
 );
@@ -75,20 +83,26 @@ function App() {
         <Toolbar />
         <div className={classes.drawerContainer}>
           <Typography variant='h4' className={classes.drawerServerName}>Server</Typography>
-          <div className={classes.listsContainer}>
-            <Menu />
+          <div className={classes.menuAndRouterContainer}>
+            <div className={classes.listsContainer}>
+              <Menu />
+            </div>
+            <div className={classes.routerContainer}>
+              <Suspense fallback={'loading'}>
+                <Switch>
+                  <Route exact path='/notifications' component={NotificationsPage} />
+                </Switch>
+              </Suspense>
+            </div>
           </div>
         </div>
       </Drawer>
       <main className={classes.content}>
         <Toolbar />
-          <Suspense fallback={'loading'}>
-            <Switch>
-              <Route exact path='/' component={Home} />
-              <Route exact path='/notifications' component={NotificationsPage} />
-              <Route component={Home} />
-            </Switch>
-          </Suspense>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route component={Home} />
+        </Switch>
       </main>
     </div>
     </Router>
