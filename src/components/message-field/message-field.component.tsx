@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import MessageAvatar from './message-avatar.component';
+import MessageAvatar, { UserStatus } from './message-avatar.component';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -20,10 +20,16 @@ const NameContainer = styled.div`
     cursor: pointer;
 `;
 
-const MessageField: FunctionComponent<any> = ({name}) => {
+interface MessageFieldProps {
+    name?: string;
+    avatarSrc?: string;
+    userStatus?: UserStatus;
+}
+
+const MessageField: FunctionComponent<any> = ({name, avatarSrc, userStatus}) => {
     return (
         <Wrapper>
-            <MessageAvatar />
+            <MessageAvatar imgSrc={avatarSrc} name={name} userStatus={userStatus} />
             <NameContainer><span>{name}</span></NameContainer>
         </Wrapper>
     );
