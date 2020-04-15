@@ -32,17 +32,16 @@ const NameContainer = styled.div`
 `;
 
 const NumMessagesContainer = styled.div`
-    width: 20%;
+    width: max-content;
     margin-left: 5px;
     color: white;
     border-radius: 4px;
     text-align: center;
     font-size: 0.8rem;
     font-weight: 600;
-    padding: 0.15rem;
+    padding: 0.2rem;
     overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis;
 `;
 
 interface MessageFieldProps {
