@@ -4,6 +4,7 @@ import { withKnobs, text, boolean, number, select } from '@storybook/addon-knobs
 import MessageField from '../components/message-field/message-field.component';
 import girl from '../images/avatars/girl.png';
 import { UserStatus } from '../components/message-field/message-avatar.component';
+import './styles.css';
 
 export default {
     title: 'MessageField',
@@ -20,9 +21,9 @@ const options = {
 
 export const DefaultStory = () => {
     return (
-        <div style={{ maxWidth: '200px'}}>
+        <div style={{ maxWidth: '224px'}}>
             <MessageField name={text('Name', 'Bonnie Nguyen')} avatarSrc={text('Avatar Src', girl)} 
-                userStatus={number('User Status', 0, options)}>
+                numMessages={number('Unread Messages', 0)} userStatus={number('User Status', 0, options)}>
             </MessageField>
         </div>
     )
