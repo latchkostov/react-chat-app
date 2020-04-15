@@ -6,6 +6,7 @@ const Wrapper = styled.div`
     display: inline-flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
     text-align: center;
     padding: 0.5rem;
     cursor: pointer;
@@ -18,6 +19,9 @@ const NameContainer = styled.div`
     font-size: 1.1rem;
     padding-left: 0.4rem;
     cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 `;
 
 interface MessageFieldProps {
