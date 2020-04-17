@@ -28,20 +28,14 @@ const useStyles = makeStyles((theme: Theme) =>
       width: drawerWidth,
     },
     drawerContainer: {
-      overflow: 'auto',
       height: '100%',
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      overflow: 'auto',
     },
     content: {
-      padding: theme.spacing(3),
-      height: `calc(100vh - ${theme.spacing(2)}px)`,
+      height: `calc(100vh)`,
       width: '100%'
-    },
-    drawerServerName: {
-      textAlign: 'center',
-      marginTop: '2rem',
-      marginBottom: '0.5rem'
     },
     menuAndRouterContainer: {
       display: 'flex',
@@ -57,7 +51,8 @@ const useStyles = makeStyles((theme: Theme) =>
     routerContainer: {
       flexGrow: 1,
       textAlign: 'center',
-      width: '70%'
+      width: '70%',
+      marginTop: '2rem'
     }
   }),
 );
@@ -87,7 +82,6 @@ function App() {
       >
         <Toolbar />
         <div className={classes.drawerContainer}>
-          <Typography variant='h5' className={classes.drawerServerName}>Server</Typography>
           <div className={classes.menuAndRouterContainer}>
             <div className={classes.listsContainer}>
               <Menu />

@@ -64,7 +64,7 @@ const MessageField: FunctionComponent<any> = ({name, avatarSrc, userStatus, numM
     const messageLabel = numMessages ? numMessages : ' ';
     return (
         <Wrapper>
-            <AvatarAndNameContainer style={{width: numMessages ? '80%' : '100%'}}>
+            <AvatarAndNameContainer style={{width: numMessages ? '85%' : '100%'}}>
                 <MessageAvatar imgSrc={avatarSrc} name={name} userStatus={userStatus} />
                 <NameAndRecentMessageContainer>
                     <NameContainer><span>{name}</span></NameContainer>
