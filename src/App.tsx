@@ -7,8 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import { AppBar, Drawer } from '@material-ui/core';
 import Menu from './components/menu/menu.component';
-import Home from './components/home/home.component';
 import DirectMessages from './components/direct-messages/direct-messages.component';
+import RightPane from './components/right-panel/right-pane.component';
 
 const drawerWidth = 350;
 
@@ -22,8 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     drawer: {
       width: drawerWidth,
-      flexShrink: 0,
-      flexGrow: 1
+      flexShrink: 0
     },
     drawerPaper: {
       width: drawerWidth,
@@ -35,8 +34,9 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: 'column'
     },
     content: {
-      flexGrow: 1,
       padding: theme.spacing(3),
+      height: `calc(100vh - ${theme.spacing(2)}px)`,
+      width: '100%'
     },
     drawerServerName: {
       textAlign: 'center',
@@ -107,10 +107,8 @@ function App() {
       </Drawer>
       <main className={classes.content}>
         <Toolbar />
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route component={Home} />
-        </Switch>
+        <RightPane>
+        </RightPane>
       </main>
     </div>
     </Router>
