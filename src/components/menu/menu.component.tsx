@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   height: 100%;
   justify-content: space-between;
   flex-direction: column;
+  align-items: center;
 `;
 
 export interface MenuProps {

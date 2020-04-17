@@ -10,7 +10,7 @@ import Menu from './components/menu/menu.component';
 import Home from './components/home/home.component';
 import DirectMessages from './components/direct-messages/direct-messages.component';
 
-const drawerWidth = 400;
+const drawerWidth = 350;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -49,11 +49,13 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'space-between',
-      borderRight: '1px solid black'
+      borderRight: '1px solid #eee',
+      width: '30%'
     },
     routerContainer: {
       flexGrow: 1,
-      textAlign: 'center'
+      textAlign: 'center',
+      width: '70%'
     }
   }),
 );
@@ -83,7 +85,7 @@ function App() {
       >
         <Toolbar />
         <div className={classes.drawerContainer}>
-          <Typography variant='h4' className={classes.drawerServerName}>Server</Typography>
+          <Typography variant='h5' className={classes.drawerServerName}>Server</Typography>
           <div className={classes.menuAndRouterContainer}>
             <div className={classes.listsContainer}>
               <Menu />

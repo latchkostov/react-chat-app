@@ -21,7 +21,7 @@ const DirectMessages: FunctionComponent<any> = (props: any) => {
             </MessageFieldWrapper>
             <MessageFieldWrapper>
                 <MessageField name={'Bonnie Nguyen'}
-                    numMessages={0} userStatus={UserStatus.Away}>
+                    numMessages={10} userStatus={UserStatus.Away}>
                 </MessageField>
             </MessageFieldWrapper>
             <MessageFieldWrapper>

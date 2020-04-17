@@ -16,32 +16,42 @@ const Wrapper = styled.div`
 
 const AvatarAndNameContainer = styled.div`
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    max-width: 80%;
     font-size: 1.1rem;
     padding-left: 0.4rem;
     cursor: pointer;
 `;
 
+const NameAndRecentMessageContainer = styled.div`
+    text-align: left;
+    margin-left: 1.0rem;
+    overflow: hidden;
+`;
+
 const NameContainer = styled.div`
-    margin-left: 0.4rem;
+    font-size: 14px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 `;
 
 const NumMessagesContainer = styled.div`
-    width: max-content;
     margin-left: 5px;
     color: white;
     border-radius: 4px;
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     font-weight: 600;
-    padding: 0.2rem;
+    padding: 0.125rem 0.3rem;
     overflow: hidden;
     white-space: nowrap;
+`;
+
+const MostRecentMessageContainer = styled.div`
+    font-size: 12px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 `;
 
 interface MessageFieldProps {
@@ -54,11 +64,17 @@ const MessageField: FunctionComponent<any> = ({name, avatarSrc, userStatus, numM
     const messageLabel = numMessages ? numMessages : ' ';
     return (
         <Wrapper>
-            <AvatarAndNameContainer>
+            <AvatarAndNameContainer style={{width: numMessages ? '80%' : '100%'}}>
                 <MessageAvatar imgSrc={avatarSrc} name={name} userStatus={userStatus} />
-                <NameContainer><span>{name}</span></NameContainer>
+                <NameAndRecentMessageContainer>
+                    <NameContainer><span>{name}</span></NameContainer>
+                    <MostRecentMessageContainer>You: Hello friend!</MostRecentMessageContainer>
+                </NameAndRecentMessageContainer>
             </AvatarAndNameContainer>
-            <NumMessagesContainer style={{backgroundColor: numMessages ? 'red' : 'unset'}}>{messageLabel}</NumMessagesContainer>
+            <NumMessagesContainer style={{
+                backgroundColor: numMessages ? 'red' : 'unset',
+                display: numMessages ? 'block' : 'none'
+            }}>{messageLabel}</NumMessagesContainer>
         </Wrapper>
     );
 };

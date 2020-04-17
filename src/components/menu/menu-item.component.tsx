@@ -13,7 +13,8 @@ export interface MenuItemProps {
 
 const useStyles = makeStyles({
     root: {
-        minWidth: '0px'
+        minWidth: '0px',
+        fontSize: '30px'
     }
 });
 
@@ -24,7 +25,7 @@ const MenuItem: FunctionComponent<MenuItemProps> = (props: MenuItemProps) => {
     return (
         <div>
             <ListItem button key={key} onClick={() => onCustomClick ? onCustomClick(linkTo) : null}>
-                <ListItemIcon classes={{root: classes.root}}><Icon /></ListItemIcon>
+                <ListItemIcon classes={{root: classes.root}}><Icon fontSize={'inherit'} /></ListItemIcon>
             </ListItem>
         </div>
     )
