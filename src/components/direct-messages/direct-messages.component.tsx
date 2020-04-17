@@ -4,12 +4,6 @@ import { UserStatus } from '../message-field/message-avatar.component';
 import styled from 'styled-components';
 
 const MessageFieldWrapper = styled.div`
-    &:first-child {
-        border-top: 2px solid #eee;
-    }
-    margin-bottom: 2px;
-    margin-right: 1px;
-    box-shadow: 0 1px 3px #3d3d3d;
 `;
 
 const DirectMessages: FunctionComponent<any> = (props: any) => {
