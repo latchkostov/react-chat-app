@@ -8,6 +8,7 @@ const MessageFieldWrapper = styled.div`
         border-top: 2px solid #eee;
     }
     margin-bottom: 2px;
+    margin-right: 1px;
     box-shadow: 0 1px 3px #3d3d3d;
 `;
 
