@@ -8,8 +8,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { AppBar, Drawer } from '@material-ui/core';
 import Menu from './components/menu/menu.component';
 import Home from './components/home/home.component';
+import DirectMessages from './components/direct-messages/direct-messages.component';
 
-const drawerWidth = 300;
+const drawerWidth = 400;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -91,6 +92,9 @@ function App() {
               <Suspense fallback={'loading'}>
                 <Switch>
                   <Route exact path='/notifications' component={NotificationsPage} />
+                </Switch>
+                <Switch>
+                <Route exact path='/direct_messages' component={DirectMessages} />
                 </Switch>
               </Suspense>
             </div>
