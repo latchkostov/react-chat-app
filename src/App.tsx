@@ -30,7 +30,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     drawerContainer: {
       overflow: 'auto',
-      height: '100%'
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column'
     },
     content: {
       flexGrow: 1,
@@ -43,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     menuAndRouterContainer: {
       display: 'flex',
-      height: '88%'
+      height: '100%'
     },
     listsContainer: {
       display: 'flex',
