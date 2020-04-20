@@ -2,11 +2,20 @@ import React, { FunctionComponent } from 'react';
 import MessageField from '../message-field/message-field.component';
 import { UserStatus } from '../message-field/message-avatar.component';
 import styled from 'styled-components';
+import { DirectMessage } from '../../redux/direct-messages/direct-message';
+import { RootState } from '../../redux/root.state';
+import { selectDirectMessages } from '../../redux/direct-messages/direct-messages.selectors';
+import { connect } from 'react-redux';
 
 const MessageFieldWrapper = styled.div`
 `;
 
-const DirectMessages: FunctionComponent<any> = (props: any) => {
+interface DirectMessagesProps {
+    directMessages?: Map<string, DirectMessage[]> | null;
+}
+
+const DirectMessages: FunctionComponent<DirectMessagesProps> = (props: DirectMessagesProps) => {
+    console.log(props.directMessages)
     return (
         <div>
             <MessageFieldWrapper>
@@ -28,4 +37,10 @@ const DirectMessages: FunctionComponent<any> = (props: any) => {
     );
 }
 
-export default DirectMessages;
+const mapStateToProps = (state: RootState): DirectMessagesProps => {
+    return { 
+        directMessages: selectDirectMessages(state)
+    };
+}
+
+export default connect(mapStateToProps, null)(DirectMessages);
