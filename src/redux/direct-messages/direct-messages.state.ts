@@ -1,5 +1,5 @@
 import { DirectMessage } from "./direct-message";
 
 export interface DirectMessagesState {
-    messages: Map<string, DirectMessage[]> | null;
+    messages: Map<string, DirectMessage[]>;
 }

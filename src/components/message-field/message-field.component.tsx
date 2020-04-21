@@ -1,6 +1,10 @@
 import React, { FunctionComponent } from 'react';
-import MessageAvatar, { UserStatus } from './message-avatar.component';
+import MessageAvatar from './message-avatar.component';
 import styled from 'styled-components';
+import { RootState } from '../../redux/root.state';
+import { User } from '../../redux/users/user';
+import { selectUserByUsername } from '../../redux/users/users.selectors';
+import { connect } from 'react-redux';
 
 const Wrapper = styled.div`
     display: inline-flex;
@@ -55,28 +59,43 @@ const MostRecentMessageContainer = styled.div`
 `;
 
 interface MessageFieldProps {
-    name?: string;
-    avatarSrc?: string;
-    userStatus?: UserStatus;
+    username?: string,
+    user?: User,
+    lastMessage?: string
 }
 
-const MessageField: FunctionComponent<any> = ({name, avatarSrc, userStatus, numMessages}) => {
+const MessageField: FunctionComponent<MessageFieldProps> = ({user, lastMessage}) => {
+    const numMessages = 0;
     const messageLabel = numMessages ? numMessages : ' ';
+    const name = user ? `${user.firstName} ${user.lastName}` : '';
+
     return (
-        <Wrapper>
-            <AvatarAndNameContainer style={{width: numMessages ? '85%' : '100%'}}>
-                <MessageAvatar imgSrc={avatarSrc} name={name} userStatus={userStatus} />
-                <NameAndRecentMessageContainer>
-                    <NameContainer><span>{name}</span></NameContainer>
-                    <MostRecentMessageContainer>You: Hello friend!</MostRecentMessageContainer>
-                </NameAndRecentMessageContainer>
-            </AvatarAndNameContainer>
-            <NumMessagesContainer style={{
-                backgroundColor: numMessages ? 'red' : 'unset',
-                display: numMessages ? 'block' : 'none'
-            }}>{messageLabel}</NumMessagesContainer>
-        </Wrapper>
+        <div>
+            { user ? 
+                <Wrapper>
+                    <AvatarAndNameContainer style={{width: numMessages ? '85%' : '100%'}}>
+                        <MessageAvatar imgSrc={'avatarSrc'} name={name} userStatus={user.status} />
+                        <NameAndRecentMessageContainer>
+                            <NameContainer><span>{name}</span></NameContainer>
+                            <MostRecentMessageContainer>{lastMessage}</MostRecentMessageContainer>
+                        </NameAndRecentMessageContainer>
+                    </AvatarAndNameContainer>
+                    <NumMessagesContainer style={{
+                        backgroundColor: numMessages ? 'red' : 'unset',
+                        display: numMessages ? 'block' : 'none'
+                    }}>{messageLabel}</NumMessagesContainer>
+                </Wrapper> : null
+            }
+        </div>
     );
 };
 
-export default MessageField;
+const mapStateToProps = (state: RootState, ownProps: MessageFieldProps): MessageFieldProps => {
+    const username = ownProps.username ? ownProps.username : '';
+    return { 
+        username: username,
+        user: selectUserByUsername(username)(state)
+    };
+}
+
+export default connect(mapStateToProps, null)(MessageField);
